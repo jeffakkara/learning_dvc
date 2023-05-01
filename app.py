@@ -12,7 +12,7 @@ def hello():
 @app.route('/train')
 def get_data_and_train():
     data = pd.read_csv('house_price.csv')
-    data=data[:6].copy()
+    data=data[:7].copy()
     data.to_csv('./result/model_with_data/training_data.csv')
     X = data[['area', 'bedrooms', 'bathrooms', 'stories']]
     y = data['price']   
