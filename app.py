@@ -13,12 +13,12 @@ def hello():
 def get_data_and_train():
     data = pd.read_csv('house_price.csv')
     data=data[:5].copy()
-    data.to_csv('./data/training_data.csv')
+    data.to_csv('./result/model_with_data/training_data.csv')
     X = data[['area', 'bedrooms', 'bathrooms', 'stories']]
     y = data['price']   
     model = LinearRegression()
     model.fit(X, y)
-    joblib.dump(model, './data/house_price_prediction_model.pkl')
+    joblib.dump(model, './result/model_with_data/house_price_prediction_model.pkl')
 
     return 'Done'
 
