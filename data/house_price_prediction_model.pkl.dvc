@@ -1,4 +1,0 @@
-outs:
-- md5: e2435c9fe1597c900ea0fb0471fae456
-  size: 952
-  path: house_price_prediction_model.pkl
