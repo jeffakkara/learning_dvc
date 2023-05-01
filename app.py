@@ -16,7 +16,7 @@ def hello():
 def get_data_and_train():
     data_path='./result/model_with_data'
     data = pd.read_csv('house_price.csv')
-    data=data[:50].copy()
+    data=data[:60].copy()
     data.to_csv('./result/model_with_data/training_data.csv')
     X = data[['area', 'bedrooms', 'bathrooms', 'stories']]
     y = data['price']   
@@ -34,7 +34,7 @@ def get_data_and_train():
     # os.system(f"git commit -m 'updated training data to have {rows} rows and trained new model at {now}'")
     # os.system('git push origin main')
     # Add the DVC-tracked files to the DVC cache and push them to your remote storage
-    subprocess.run(['dvc', 'add', '.'])
+    subprocess.run(['dvc', 'add', './result/model_with_data'])
     subprocess.run(['dvc', 'push'])
     # Generate a commit message with the current timestamp
     commit_message = f'Trained model at {datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} with {rows} of data'
