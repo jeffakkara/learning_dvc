@@ -15,7 +15,7 @@ def hello():
 def get_data_and_train():
     data_path='./result/model_with_data'
     data = pd.read_csv('house_price.csv')
-    data=data[:30].copy()
+    data=data[:40].copy()
     data.to_csv('./result/model_with_data/training_data.csv')
     X = data[['area', 'bedrooms', 'bathrooms', 'stories']]
     y = data['price']   
@@ -30,7 +30,7 @@ def get_data_and_train():
     os.system(f'dvc add {data_path}')
     os.system('dvc push')
     os.system('git add .')
-    os.system('git commit -m f"updated training data to have {rows} rows and trained new model at {now}"')
+    os.system(f'git commit -m "updated training data to have {rows} rows and trained new model at {now}"')
     os.system('git push origin main')
     return 'Done'
 
