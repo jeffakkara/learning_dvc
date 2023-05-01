@@ -15,7 +15,7 @@ def hello():
 def get_data_and_train():
     data_path='./result/model_with_data'
     data = pd.read_csv('house_price.csv')
-    data=data[:25].copy()
+    data=data[:30].copy()
     data.to_csv('./result/model_with_data/training_data.csv')
     X = data[['area', 'bedrooms', 'bathrooms', 'stories']]
     y = data['price']   
@@ -25,8 +25,8 @@ def get_data_and_train():
     joblib.dump(model, './result/model_with_data/house_price_prediction_model.pkl')
     now = datetime.datetime.now()
     filename = 'result/model_with_data/model_details.txt'
-    with open(filename, 'a') as f:
-        f.write(f'model trained at {now} with {rows} rows of data' + '\n')
+    with open(filename, 'w') as f:
+        f.write(str(f'model trained at {now} with {rows} rows of data') + '\n')
     os.system(f'dvc add {data_path}')
     os.system('dvc push')
     os.system('git add .')
