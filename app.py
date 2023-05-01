@@ -7,7 +7,13 @@ import os
 import subprocess
 
 app = Flask(__name__)
-app.debug=True
+app.debug = True
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return '', 404
+
 
 @app.route('/')
 def hello():
@@ -17,7 +23,7 @@ def hello():
 def get_data_and_train():
     data_path='./result/model_with_data'
     data = pd.read_csv('house_price.csv')
-    data=data[:80].copy()
+    data=data[:120].copy()
     data.to_csv('./result/model_with_data/training_data.csv')
     X = data[['area', 'bedrooms', 'bathrooms', 'stories']]
     y = data['price']   
