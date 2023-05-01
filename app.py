@@ -16,7 +16,7 @@ def hello():
 def get_data_and_train():
     data_path='./result/model_with_data'
     data = pd.read_csv('house_price.csv')
-    data=data[:60].copy()
+    data=data[:80].copy()
     data.to_csv('./result/model_with_data/training_data.csv')
     X = data[['area', 'bedrooms', 'bathrooms', 'stories']]
     y = data['price']   
